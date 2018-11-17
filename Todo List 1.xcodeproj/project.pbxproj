@@ -15,6 +15,7 @@
 		309E5B462199733900328A86 /* TodoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309E5B452199733900328A86 /* TodoTableViewController.swift */; };
 		309E5B482199740D00328A86 /* ToDo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309E5B472199740D00328A86 /* ToDo.swift */; };
 		309E5B4A219AADE200328A86 /* AddToDoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309E5B49219AADE200328A86 /* AddToDoViewController.swift */; };
+		309E5B4C219D5F5900328A86 /* ShowTodoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309E5B4B219D5F5900328A86 /* ShowTodoViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		309E5B452199733900328A86 /* TodoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoTableViewController.swift; sourceTree = "<group>"; };
 		309E5B472199740D00328A86 /* ToDo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDo.swift; sourceTree = "<group>"; };
 		309E5B49219AADE200328A86 /* AddToDoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToDoViewController.swift; sourceTree = "<group>"; };
+		309E5B4B219D5F5900328A86 /* ShowTodoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowTodoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				309E5B30219943B700328A86 /* AppDelegate.swift */,
 				309E5B452199733900328A86 /* TodoTableViewController.swift */,
 				309E5B49219AADE200328A86 /* AddToDoViewController.swift */,
+				309E5B4B219D5F5900328A86 /* ShowTodoViewController.swift */,
 				309E5B472199740D00328A86 /* ToDo.swift */,
 				309E5B34219943B700328A86 /* Main.storyboard */,
 				309E5B3A219943B800328A86 /* Assets.xcassets */,
@@ -149,6 +152,7 @@
 				309E5B4A219AADE200328A86 /* AddToDoViewController.swift in Sources */,
 				309E5B39219943B700328A86 /* Todo_List_1.xcdatamodeld in Sources */,
 				309E5B482199740D00328A86 /* ToDo.swift in Sources */,
+				309E5B4C219D5F5900328A86 /* ShowTodoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -12,7 +12,7 @@ class AddToDoViewController: UIViewController {
     @IBOutlet weak var todoName: UITextField!
     @IBOutlet weak var todoImportant: UISwitch!
     
-    var previousToDoVC = TodoTableViewController()
+    var previousVC = TodoTableViewController()  //will use as reference to previous vc that we came from
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,11 +22,13 @@ class AddToDoViewController: UIViewController {
     
     @IBAction func todoAddTapped(_ sender: Any) {
         let todo = ToDo()
-        todo.name = todoName.text!
+        if let nameunwrapped = todoName.text { // unwrap to tmp in case todoName.text is nil we dont crash
+            todo.name = nameunwrapped
+        }
         todo.important = todoImportant.isOn
         
-        previousToDoVC.todos.append(todo) //access array from table view contoller and add new todo item to it.
-        previousToDoVC.tableView.reloadData()  // table VC needs to reload data so newly added element shows up in table
+        previousVC.todos.append(todo) //access array from table view contoller and add new todo item to it.
+        previousVC.tableView.reloadData()  // table VC needs to reload data so newly added element shows up in table
         navigationController?.popViewController(animated: true)  //pop means go back to last VC that called us
     }
     /*

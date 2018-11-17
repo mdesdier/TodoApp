@@ -39,10 +39,53 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="IGd-Mh-dUm" kind="show" identifier="moveToShow" id="JK1-gk-Ohs"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T7x-4o-eg0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="870" y="134"/>
+        </scene>
+        <!--Show Todo View Controller-->
+        <scene sceneID="34D-XJ-8ip">
+            <objects>
+                <viewController id="IGd-Mh-dUm" customClass="ShowTodoViewController" customModule="Todo_List_1" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="r05-Px-PLp">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s9q-tN-dAq">
+                                <rect key="frame" x="5" y="135" width="365" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ska-n5-Kc2">
+                                <rect key="frame" x="154" y="336" width="67" height="30"/>
+                                <state key="normal" title="Complete"/>
+                                <connections>
+                                    <action selector="TodoComplete:" destination="IGd-Mh-dUm" eventType="touchUpInside" id="vLQ-dL-jlf"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Ska-n5-Kc2" firstAttribute="centerX" secondItem="r05-Px-PLp" secondAttribute="centerX" id="12V-rm-Tx3"/>
+                            <constraint firstItem="gA6-uK-CCf" firstAttribute="trailing" secondItem="s9q-tN-dAq" secondAttribute="trailing" constant="5" id="5IM-6A-jQ2"/>
+                            <constraint firstItem="s9q-tN-dAq" firstAttribute="leading" secondItem="gA6-uK-CCf" secondAttribute="leading" constant="5" id="a63-k7-QsT"/>
+                            <constraint firstItem="s9q-tN-dAq" firstAttribute="top" secondItem="gA6-uK-CCf" secondAttribute="top" constant="71" id="nz6-yb-hb9"/>
+                            <constraint firstItem="Ska-n5-Kc2" firstAttribute="top" secondItem="s9q-tN-dAq" secondAttribute="bottom" constant="177" id="tkq-2B-fKT"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="gA6-uK-CCf"/>
+                    </view>
+                    <connections>
+                        <outlet property="TodoLabel" destination="s9q-tN-dAq" id="oeP-0k-tw3"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mdE-aC-eLn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="870" y="970"/>
         </scene>
         <!--Add To Do View Controller-->
         <scene sceneID="F6s-x4-XxQ">
