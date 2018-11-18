@@ -13,17 +13,28 @@ class ShowTodoViewController: UIViewController {
     @IBOutlet weak var TodoLabel: UILabel!
     
     var previousToDoVC = TodoTableViewController()  //pointer to previous VC that called us
-    var selectedToDo = ToDo()
+    var selectedToDo : ToDoCoreData? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        TodoLabel.text = selectedToDo.name
+        
         // Do any additional setup after loading the view.
+        
+        TodoLabel.text = selectedToDo?.name  //label accepts string optional directly so no unwrapping needed
+        
     }
     
     @IBAction func TodoComplete(_ sender: Any) {
         //complete button clicked
+        
+        if let myContext = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext {
+            if let theTodo = selectedToDo {
+                myContext.delete(theTodo)
+                navigationController?.popViewController(animated: true)  //go back to previous vc
+            }
+        }
+        
+        /*   no longer need to go through array to delete item
         var index = 0
         for toDo in previousToDoVC.todos {
             if toDo.name == selectedToDo.name {
@@ -34,10 +45,10 @@ class ShowTodoViewController: UIViewController {
                 break
             }
             index += 1  //keep track of where we are in array as we go through it
+ 
             
-            
-        }        //delect the selected todo from array
-        
+          }        //delect the selected todo from array
+        */
     }
     
     /*

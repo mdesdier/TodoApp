@@ -21,6 +21,8 @@ class AddToDoViewController: UIViewController {
     }
     
     @IBAction func todoAddTapped(_ sender: Any) {
+     
+        /*
         let todo = ToDo()
         if let nameunwrapped = todoName.text { // unwrap to tmp in case todoName.text is nil we dont crash
             todo.name = nameunwrapped
@@ -30,7 +32,24 @@ class AddToDoViewController: UIViewController {
         previousVC.todos.append(todo) //access array from table view contoller and add new todo item to it.
         previousVC.tableView.reloadData()  // table VC needs to reload data so newly added element shows up in table
         navigationController?.popViewController(animated: true)  //pop means go back to last VC that called us
-    }
+         */
+        
+        //add new todo to core data
+        //get my app delegate for context (bridget between my app and core data)
+        if let myContext = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext {
+            let todo = ToDoCoreData(entity: ToDoCoreData.entity() , insertInto: myContext)
+            if let nameunwrapped = todoName.text { // unwrap to tmp in case todoName.text is nil we dont crash
+                todo.name = nameunwrapped
+            }
+            todo.important = todoImportant.isOn
+            
+            try? myContext.save()    //save to core data
+
+            //don't need to access the old todo array on the man VC since we are saving direct to core data
+            navigationController?.popViewController(animated: true)  //pop means go back to last VC that called us
+
+        }
+ }
     /*
     // MARK: - Navigation
 

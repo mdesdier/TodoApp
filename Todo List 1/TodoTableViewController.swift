@@ -10,18 +10,24 @@ import UIKit
 
 class TodoTableViewController: UITableViewController {
 
-    var todos : [ToDo] = []
+    var todos : [ToDoCoreData] = []
     
-    override func viewDidLoad() {
+    override func viewDidLoad() { //only gets called once at start
         super.viewDidLoad()
 
-        todos = createToDos()
+        //todos = createToDos()
+        
+        //getToDos()
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        getToDos()
     }
 
     //override func numberOfSections(in tableView: UITableView) -> Int {
@@ -35,6 +41,7 @@ class TodoTableViewController: UITableViewController {
     }
 
     //temp function to create some items internally for now
+    //no longer used
     func createToDos() -> [ToDo] {  //return array of ToDo objects
         let eggs = ToDo()
         eggs.name = "Buy eggs"
@@ -49,18 +56,34 @@ class TodoTableViewController: UITableViewController {
         return [eggs, dog, cheese]
     }
     
+    //fetch data from core data
+    func getToDos() {
+        if let myContext = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext {
+            
+            if let coreDataTodos = try? myContext.fetch(ToDoCoreData.fetchRequest()) as? [ToDoCoreData] {
+                if let theTodos = coreDataTodos { //have to unwrap twice
+                    print(theTodos.first?.name)
+                    todos = theTodos    //put it in our todo array
+                    tableView.reloadData()
+                }
+            }//gets all todo objects stored in core data.  return as array of todos
+        }
+    }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
         let todo = todos[indexPath.row] // get a todo from array based on selected row
         
-        // Configure the cell...
-        if todo.important {
-            cell.textLabel?.text = "❗️" + todo.name
-        } else {
-            cell.textLabel?.text = todo.name
-            
+        
+        if let name = todo.name { //need to unwrap first
+            // Configure the cell...
+            if todo.important {
+                cell.textLabel?.text = "❗️" + name
+            } else {
+                cell.textLabel?.text = todo.name
+                
+            }
         }
-            
         return cell
     }
     
@@ -85,7 +108,7 @@ class TodoTableViewController: UITableViewController {
         
         if let showVC = segue.destination as? ShowTodoViewController {
            
-            if let todo = sender as? ToDo {
+            if let todo = sender as? ToDoCoreData {
                 showVC.selectedToDo = todo
                 showVC.previousToDoVC = self
             }
